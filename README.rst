@@ -28,7 +28,11 @@ Vectorized multivariate statistical functions  s for analyzing multi-dimensional
 Features
 --------
 
-* TODO
+* Vectorized multivariate statistical functions such as covariance, correlation, and regression between two multidimensional datasets
+* Can compute lagged relationships
+* Can provide confidence level on relationships
+* A handy vectorized 'detrend' function that removes temporal trend in a data
+* Built from xarray- returned objects can utilize all of xarray.DataArray() capabilities such as plotting
 
 Credits
 ---------
@@ -37,4 +41,3 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
