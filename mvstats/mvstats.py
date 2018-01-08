@@ -4,10 +4,11 @@
 import xarray as xr
 import numpy as np
 
-def cov(x, y, lagx=0, lagy=0):
+def cov(x, y, time_axis = 0, lagx=0, lagy=0):
     """
     Computes covariance between x and y along time dimension, accounting for given lags (if any)
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension.
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: An xarray DataArray object showing covariance between x and y along the 'time' dimension.
         If lag values are provided, the returned object will show lagged covariance.
@@ -32,14 +33,15 @@ def cov(x, y, lagx=0, lagy=0):
     ystd  = y.std(dim='time')
 
     #4. Compute covariance along time dimension
-    cov   =  np.sum((x - xmean)*(y - ymean), axis=0)/(n)
+    cov   =  np.sum((x - xmean)*(y - ymean), axis=time_axis)/(n)
 
     return cov
 
-def cor(x, y, lagx=0, lagy=0):
+def cor(x, y, time_axis = 0,lagx=0, lagy=0):
     """
     Computes Pearson Correlation coefficient between x and y along time dimension, accounting for given lags (if any)
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: An xarray DataArray object showing Pearson Correlation coefficient between x and y along the 'time' dimension
         If lag values are provided, the returned object will show lagged correlation.
@@ -64,17 +66,18 @@ def cor(x, y, lagx=0, lagy=0):
     ystd  = y.std(dim='time')
 
     #4. Compute covariance along time dimension
-    cov   =  np.sum((x - xmean)*(y - ymean), axis=0)/(n)
+    cov   =  np.sum((x - xmean)*(y - ymean), axis=time_axis)/(n)
 
     #5. Compute correlation along time dimension
     cor   = cov/(xstd*ystd)
 
     return cor
 
-def reg(x, y, lagx=0, lagy=0):
+def reg(x, y, time_axis = 0,lagx=0, lagy=0):
     """
     Computes simple linear regression slope and intercept for y with respect to x, accounting for given lags (if any)
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension.
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: Two xarray DataArray objects showing estimated regression slope and intercept values for y with respect to x along the 'time' dimension.
         If lag values are provided, the returned object will show lagged regression.
@@ -99,7 +102,7 @@ def reg(x, y, lagx=0, lagy=0):
     ystd  = y.std(dim='time')
 
     #4. Compute covariance along time dimension
-    cov   =  np.sum((x - xmean)*(y - ymean), axis=0)/(n)
+    cov   =  np.sum((x - xmean)*(y - ymean), axis=time_axis)/(n)
 
     #5. Compute regression slope and intercept:
     slope     = cov/(xstd**2)
@@ -107,10 +110,11 @@ def reg(x, y, lagx=0, lagy=0):
 
     return slope, intercept
 
-def linregress_ND(x, y, lagx=0, lagy=0):
+def linregress_ND(x, y,time_axis = 0,lagx=0, lagy=0):
     """
     Multidimensional equivalent of scipy.stats.linregress()
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension.
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: Xarray DataArray objects showing Covariance, correlation, regression slope and intercept, p-value, and standard error on regression (short: cov,cor,slope,intercept,pval,stderr)
     for y with respect to x along time dimension, accounting for given lags (if any)
@@ -135,7 +139,7 @@ def linregress_ND(x, y, lagx=0, lagy=0):
     ystd  = y.std(dim='time')
 
     #4. Compute covariance along time axis
-    cov   =  np.sum((x - xmean)*(y - ymean), axis=0)/(n)
+    cov   =  np.sum((x - xmean)*(y - ymean), axis=time_axis)/(n)
 
     #5. Compute correlation along time axis
     cor   = cov/(xstd*ystd)
