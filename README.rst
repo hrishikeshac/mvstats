@@ -18,7 +18,7 @@ mvstats
      :alt: Updates
 
 
-Vectorized multivariate statistical functions  s for analyzing multi-dimensional earth system data
+Vectorized multivariate statistical functions for analyzing multi-dimensional earth system data
 
 
 * Free software: MIT license

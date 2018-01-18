@@ -23,7 +23,7 @@ you through the process.
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
-From sources
+From sources (NOTE: At the moment, only this method works)
 ------------
 
 The sources for mvstats can be downloaded from the `Github repo`_.
