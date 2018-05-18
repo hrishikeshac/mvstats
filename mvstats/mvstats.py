@@ -8,7 +8,7 @@ def cov(x, y, time_axis = 0, lagx=0, lagy=0):
     """
     Computes covariance between x and y along time dimension, accounting for given lags (if any)
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension.
-        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument.
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: An xarray DataArray object showing covariance between x and y along the 'time' dimension.
         If lag values are provided, the returned object will show lagged covariance.
@@ -41,7 +41,7 @@ def cor(x, y, time_axis = 0,lagx=0, lagy=0):
     """
     Computes Pearson Correlation coefficient between x and y along time dimension, accounting for given lags (if any)
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension
-        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument.
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: An xarray DataArray object showing Pearson Correlation coefficient between x and y along the 'time' dimension
         If lag values are provided, the returned object will show lagged correlation.
@@ -77,7 +77,7 @@ def reg(x, y, time_axis = 0,lagx=0, lagy=0):
     """
     Computes simple linear regression slope and intercept for y with respect to x, accounting for given lags (if any)
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension.
-        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument.
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: Two xarray DataArray objects showing estimated regression slope and intercept values for y with respect to x along the 'time' dimension.
         If lag values are provided, the returned object will show lagged regression.
@@ -114,7 +114,7 @@ def linregress_ND(x, y,time_axis = 0,lagx=0, lagy=0):
     """
     Multidimensional equivalent of scipy.stats.linregress()
     Input: Two single- or multi-dimensional xrarray DataArray objects (x and y) which have 'time' as the first dimension.
-        Default time axis is considered as 0, but can be changed using the 'time_axis' argument. 
+        Default time axis is considered as 0, but can be changed using the 'time_axis' argument.
         Lag values (lagx for input data x, and lagy for input data y) can also be prescribed. Default lag values are zero.
     Output: Xarray DataArray objects showing Covariance, correlation, regression slope and intercept, p-value, and standard error on regression (short: cov,cor,slope,intercept,pval,stderr)
     for y with respect to x along time dimension, accounting for given lags (if any)
