@@ -181,6 +181,6 @@ def detrend_ND_xr(y, rolling_mean_window = 0):
     y_trend = (slope*x + intercept)
 
     #5. Subtract the estimated trend from y
-    det = y - y_trend + y.mean()
+    det = y - y_trend + y.mean(dim='time')
 
     return det
